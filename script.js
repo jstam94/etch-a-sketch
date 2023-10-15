@@ -1,10 +1,16 @@
 let container = document.querySelector('.container')
+let gridSize
 
 
+function parseBoxSize(){
+   return 480 / gridSize;
+}
 
 function addBox(){
     let box = document.createElement('div');
     box.setAttribute('class', 'smallBox')
+    let raw = parseBoxSize();
+    box.style.cssText = `height: ${raw}px; width: ${raw}px;`;
     container.appendChild(box);
 }
 
@@ -21,7 +27,6 @@ boxes.forEach((box)=> box.addEventListener('mouseenter', () =>{
 }))}
 
 createGrid = (gridSize = 256) => {for(let i = 0; i < (gridSize); i ++){
-    console.log(i);
     addBox();
 }}
 
@@ -32,7 +37,8 @@ etchASketch();
 let button = document.querySelector('button');
 button.addEventListener('click', () => {
     resetGrid();
-    gridSize = prompt(`Adjust Grid Size (1x1 - 100x100)`)
-    createGrid(gridSize);
+    gridSize = (prompt(`Adjust Grid Size (1x1 - 100x100). Enter a single value. (eg 10 will render 10x10)`));
+    createGrid(gridSize ** 2);
     etchASketch();
+    console.log(gridSize)
 });
