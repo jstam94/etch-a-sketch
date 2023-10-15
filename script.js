@@ -1,7 +1,6 @@
 let container = document.querySelector('.container')
 let gridSize
 
-
 function parseBoxSize(){
    return 480 / gridSize;
 }
