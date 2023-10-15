@@ -35,9 +35,13 @@ etchASketch();
 
 let button = document.querySelector('button');
 button.addEventListener('click', () => {
+    gridSize = +(prompt(`Adjust Grid Size (1x1 - 100x100). Enter a single value. (eg 10 will render 10x10)`));
+    if(gridSize < 1 || gridSize > 100){
+        alert('ERROR!!!!, ENTER A NUMBER BETWEEN 1-100');
+    } else {
     resetGrid();
-    gridSize = (prompt(`Adjust Grid Size (1x1 - 100x100). Enter a single value. (eg 10 will render 10x10)`));
     createGrid(gridSize ** 2);
     etchASketch();
-    console.log(gridSize)
+    }
 });
+
